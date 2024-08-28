@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Styles/Game4.css';
+import styles from './Styles/Game4.module.css'; // CSS modülünü içe aktar
 
-const Game = () => {
+const Game4 = () => {
     const [gridSize, setGridSize] = useState(3);
     const [molePath, setMolePath] = useState([]);
     const [userPath, setUserPath] = useState([]);
@@ -69,7 +69,7 @@ const Game = () => {
 
     const animateMolePath = () => {
         const mole = document.createElement('div');
-        mole.classList.add('mole');
+        mole.classList.add(styles.mole);
         gameBoardRef.current.appendChild(mole);
         moleRef.current = mole;
 
@@ -77,7 +77,7 @@ const Game = () => {
         const interval = setInterval(() => {
             if (index < molePath.length) {
                 const cellIndex = molePath[index];
-                const cell = document.querySelector(`.cell[data-index='${cellIndex}']`);
+                const cell = document.querySelector(`.${styles.cell}[data-index='${cellIndex}']`);
                 const cellRect = cell.getBoundingClientRect();
                 const boardRect = gameBoardRef.current.getBoundingClientRect();
 
@@ -102,12 +102,12 @@ const Game = () => {
 
         const currentStep = newUserPath.length - 1;
         if (newUserPath[currentStep] !== molePath[currentStep]) {
-            document.querySelector(`.cell[data-index='${index}']`).classList.add('wrong');
+            document.querySelector(`.${styles.cell}[data-index='${index}']`).classList.add(styles.wrong);
             setMessage('Yanlış! Oyun bitti. Yeniden başlamak için "Oyunu Başlat" düğmesine tıklayın.');
             setIsUserTurn(false);
             return;
         } else {
-            document.querySelector(`.cell[data-index='${index}']`).classList.add('selected');
+            document.querySelector(`.${styles.cell}[data-index='${index}']`).classList.add(styles.selected);
         }
 
         if (newUserPath.length === molePath.length) {
@@ -138,7 +138,7 @@ const Game = () => {
 
     const turnCellsGreen = () => {
         molePath.forEach(index => {
-            const cell = document.querySelector(`.cell[data-index='${index}']`);
+            const cell = document.querySelector(`.${styles.cell}[data-index='${index}']`);
             if (cell) {
                 cell.style.backgroundColor = 'green';
             }
@@ -159,21 +159,21 @@ const Game = () => {
     };
 
     return (
-        <div className="App">
+        <div className={styles.App}>
             <h1>Köstebek Patika Hafıza Oyunu</h1>
-            <div className="warning" ref={warningRef}>
+            <div className={styles.warning} ref={warningRef}>
                 İpucu: Köstebeğin ilk konumu patikaya dahil değildir. Lütfen ilk konuma tıklamayınız
             </div>
-            <div id="game-board" className="game-board" ref={gameBoardRef}>
+            <div id="game-board" className={styles.gameBoard} ref={gameBoardRef}>
                 {createBoard().map(i => (
-                    <div key={i} className="cell" data-index={i} onClick={() => selectCell(i)}></div>
+                    <div key={i} className={styles.cell} data-index={i} onClick={() => selectCell(i)}></div>
                 ))}
-                <div className="mole" ref={moleRef}></div>
+                <div className={styles.mole} ref={moleRef}></div>
             </div>
-            <button id="start-game" onClick={startGame}>Oyunu Başlat</button>
-            <p id="message">{message}</p>
+            <button id="start-game" className={styles.startButton} onClick={startGame}>Oyunu Başlat</button>
+            <p className={styles.message}>{message}</p>
         </div>
     );
 };
 
-export default Game;
+export default Game4;

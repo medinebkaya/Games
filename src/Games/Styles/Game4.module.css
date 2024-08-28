@@ -1,4 +1,5 @@
-body {
+/* Game.module.css */
+.App {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -6,8 +7,8 @@ body {
     margin: 0;
     padding: 20px;
     background-image: url(./images/mole3.jpg);
-    background-size: cover; /* Arka planın tam ekrana yayılması için */
-    background-position: center; /* Arka planın merkezlenmesi için */
+    background-size: cover;
+    background-position: center;
 }
 
 h1 {
@@ -23,7 +24,7 @@ h1 {
     border: 3px solid #ffeb3b;
 }
 
-.game-board {
+.gameBoard {
     display: grid;
     grid-template-columns: repeat(10, 50px);
     grid-template-rows: repeat(10, 50px);
@@ -74,11 +75,11 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-button {
+.startButton {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background-color: #4caf50; /* Canlı yeşil renk */
+    background-color: #4caf50;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
@@ -87,18 +88,18 @@ button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: #45a049; /* Daha koyu yeşil renk */
-    transform: scale(1.05); /* Butonu büyütme efekti */
+.startButton:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
-button:active {
-    background-color: #388e3c; /* Daha koyu yeşil renk */
-    transform: scale(0.98); /* Butonu küçültme efekti */
+.startButton:active {
+    background-color: #388e3c;
+    transform: scale(0.98);
 }
 
-#message {
+.message {
     font-weight: bold;
-    color: #fff; /* Beyaz renk */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Hafif gölge efekti */
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }

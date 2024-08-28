@@ -9,6 +9,7 @@ import Game6 from './Games/Game6';
 
 function App() {
   return (
+    
     <Router>
       <div>
         <Routes>
@@ -19,6 +20,8 @@ function App() {
           <Route path="/game5" element={<Game5 />} />
           <Route path="/game6" element={<Game6 />} />
         </Routes>
+        <br />
+        <br />
       </div>
     </Router>
   );

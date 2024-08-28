@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Styles/Game3.css'; // Stil dosyanız varsa bu şekilde import edin
+import styles from './Styles/Game3.module.css'; // CSS modülünü içe aktar
 
 const Game3 = () => {
     const [score, setScore] = useState(0);
@@ -117,13 +117,13 @@ const Game3 = () => {
     };
 
     return (
-        <div id="container">
-            <div id="difficultyButtons">
-                <button className="difficultyButton" onClick={() => !gameStarted && setLevel(1)}>Kolay</button>
-                <button className="difficultyButton" onClick={() => !gameStarted && setLevel(2)}>Orta</button>
-                <button className="difficultyButton" onClick={() => !gameStarted && setLevel(3)}>Zor</button>
+        <div className={styles.container}>
+            <div className={styles.difficultyButtons}>
+                <button className={styles.difficultyButton} onClick={() => !gameStarted && setLevel(1)}>Kolay</button>
+                <button className={styles.difficultyButton} onClick={() => !gameStarted && setLevel(2)}>Orta</button>
+                <button className={styles.difficultyButton} onClick={() => !gameStarted && setLevel(3)}>Zor</button>
             </div>
-            <div id="gameArea">
+            <div className={styles.gameArea}>
                 {circles.map(circle => (
                     <div
                         key={circle.id}
@@ -137,10 +137,10 @@ const Game3 = () => {
                     ></div>
                 ))}
                 {!gameStarted && (
-                    <button id="startButton" onClick={startGame}>Başlat</button>
+                    <button className={styles.startButton} onClick={startGame}>Başlat</button>
                 )}
             </div>
-            <div id="rules">
+            <div className={styles.rules}>
                 <h2>Oyun Kuralları:</h2>
                 <ul>
                     <li>Dairelere tıklayarak puan kazanın.</li>
@@ -152,10 +152,10 @@ const Game3 = () => {
                         <li>1.5 saniyeden hızlı tıklama: 2 puan</li>
                     </ul>
                 </ul>
-                <div id="scoreBoard">Score: {score}</div>
-                <div id="highScoreBoard">High Score: {highScore}</div>
-                <div id="difficultyBoard">Difficulty: {level === 1 ? 'Kolay' : level === 2 ? 'Orta' : 'Zor'}</div>
-                <div id="timer">Time Remaining: {remainingTime}s</div>
+                <div className={styles.scoreBoard}>Score: {score}</div>
+                <div className={styles.highScoreBoard}>High Score: {highScore}</div>
+                <div className={styles.difficultyBoard}>Difficulty: {level === 1 ? 'Kolay' : level === 2 ? 'Orta' : 'Zor'}</div>
+                <div className={styles.timer}>Time Remaining: {remainingTime}s</div>
             </div>
         </div>
     );

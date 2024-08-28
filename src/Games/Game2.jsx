@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles/Game2.css';
+import styles from './styles/Game2.module.css'; // CSS modülünü içe aktar
 
 const cardLevels = {
     1: { size: 8, columns: 4 },
@@ -43,7 +43,7 @@ function Game2() {
     }, [currentLevel, isGameStarted]);
 
     const startGame = (level) => {
-        const { size, columns } = cardLevels[level];
+        const { size } = cardLevels[level];
         const symbolCount = size / 2;
         const selectedSymbols = symbols.slice(0, symbolCount);
         const shuffledSymbols = [...selectedSymbols, ...selectedSymbols].sort(() => 0.5 - Math.random());
@@ -58,16 +58,10 @@ function Game2() {
         setMatchedPairs(0);
         setFlippedCards([]);
         setMoves(0);
-
-        if (!startTime) {
-            setStartTime(new Date());
-        } else {
-            setStartTime(new Date());
-        }
-
         setHiddenPlayAgain(true);
         setHiddenNextLevel(true);
         setMessage('');
+        setStartTime(new Date());
     };
 
     const flipCard = (index) => {
@@ -122,7 +116,6 @@ function Game2() {
 
         setMessage(`Tebrikler! Tüm kartları eşleştirdiniz! Süre: ${timeElapsed} saniye, Hamleler: ${Math.ceil(moves / 2)} | Puan: ${Math.round(score)}`);
         setHiddenPlayAgain(false);
-
         if (currentLevel < Object.keys(cardLevels).length) {
             setHiddenNextLevel(false);
         }
@@ -130,34 +123,34 @@ function Game2() {
 
     const handleStartGame = () => {
         setIsGameStarted(true);
-        setStartTime(new Date());
+        startGame(currentLevel);
     };
 
     return (
-        <div className="container">
-            <div className="top-info">
+        <div className={styles.container}>
+            <div className={styles.topInfo}>
                 <h1>Kart Çevirme Oyunu</h1>
-                <p>En Yüksek Rekor: <span id="high-score">{Math.round(highScore)}</span></p>
+                <p>En Yüksek Rekor: <span>{Math.round(highScore)}</span></p>
             </div>
-            <div className="game-info">
-                <p>Geçen Süre: <span id="time">{timeDisplay}</span></p>
-                <p>Hamle Sayısı: <span id="moves">{Math.ceil(moves / 2)}</span></p>
+            <div className={styles.gameInfo}>
+                <p>Geçen Süre: <span>{timeDisplay}</span></p>
+                <p>Hamle Sayısı: <span>{Math.ceil(moves / 2)}</span></p>
             </div>
             {!isGameStarted && (
-                <button id="start-game" onClick={handleStartGame}>Başla</button>
+                <button onClick={handleStartGame}>Başla</button>
             )}
-            <div className="game-board" style={{ gridTemplateColumns: `repeat(${cardLevels[currentLevel].columns}, 100px)` }}>
+            <div className={styles.gameBoard} style={{ gridTemplateColumns: `repeat(${cardLevels[currentLevel].columns}, 100px)` }}>
                 {cards.map((card, index) => (
-                    <div key={index} className={`card ${card.flipped ? 'flipped' : ''}`} onClick={() => flipCard(index)}>
-                        <div className="card-inner">
-                            <div className="card-front">?</div>
-                            <div className="card-back">{card.content}</div>
+                    <div key={index} className={`${styles.card} ${card.flipped ? styles.flipped : ''}`} onClick={() => flipCard(index)}>
+                        <div className={styles.cardInner}>
+                            <div className={styles.cardFront}>?</div>
+                            <div className={styles.cardBack}>{card.content}</div>
                         </div>
                     </div>
                 ))}
             </div>
-            <p id="message">{message}</p>
-            <button id="play-again" className={hiddenPlayAgain ? 'hidden' : ''} onClick={() => {
+            <p className={styles.message}>{message}</p>
+            <button className={hiddenPlayAgain ? styles.hidden : ''} onClick={() => {
                 setIsGameStarted(false);
                 setCurrentLevel(1);
                 setMoves(0);
@@ -166,7 +159,7 @@ function Game2() {
                 setTimeDisplay('0s');
                 startGame(1);
             }}>Tekrar Oyna</button>
-            <button id="next-level" className={hiddenNextLevel ? 'hidden' : ''} onClick={() => setCurrentLevel(currentLevel + 1)}>Sonraki Seviye</button>
+            <button className={hiddenNextLevel ? styles.hidden : ''} onClick={() => setCurrentLevel(currentLevel + 1)}>Sonraki Seviye</button>
         </div>
     );
 }

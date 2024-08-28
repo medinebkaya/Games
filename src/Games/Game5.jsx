@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Styles/Game5.css';
+import styles from './Styles/Game5.module.css'; // CSS modülünü içe aktar
 import arabalar from './Styles/images/Arabalar.jpg';
 import hayvanlar from './Styles/images/Hayvanlar.jpg';
 import kirtasiye from './Styles/images/Kırtasiye.png';
@@ -7,11 +7,11 @@ import mutfak from './Styles/images/Mutfak.jpeg';
 import kareler from './Styles/images/Kareler.png';
 
 const photos = [
-    { src: {arabalar}, question: "Bu fotoğrafta hangi renklerde araba vardı?", correctAnswers: ["kırmızı", "mavi", "yeşil", "gri", "sarı"] },
-    { src: {hayvanlar}, question: "Bu fotoğrafta hangi hayvanlar vardı?", correctAnswers: ["aslan", "fil", "zürafa", "kuş", "ördek", "kuğu", "kırlangıç"] },
-    { src: {kirtasiye}, question: "Bu fotoğrafta hangi nesneleri gördünüz?", correctAnswers: ["kağıt", "defter", "kalem", "bilgisayar", "fincan", "kahve", "çiçek", "saksı", "gözlük", "tablet"] },
-    { src: {mutfak}, question: "Bu fotoğrafta kaç beyaz eşya gördünüz?", correctAnswers: ["3", "üç"] },
-    { src: {kareler}, question: "Gördüğünüz tablolarda kaç kare iki tabloda da boyalıydı?", correctAnswers: ["1", "bir"] },
+    { src: arabalar, question: "Bu fotoğrafta hangi renklerde araba vardı?", correctAnswers: ["kırmızı", "mavi", "yeşil", "gri", "sarı"] },
+    { src: hayvanlar, question: "Bu fotoğrafta hangi hayvanlar vardı?", correctAnswers: ["aslan", "fil", "zürafa", "kuş", "ördek", "kuğu", "kırlangıç"] },
+    { src: kirtasiye, question: "Bu fotoğrafta hangi nesneleri gördünüz?", correctAnswers: ["kağıt", "defter", "kalem", "bilgisayar", "fincan", "kahve", "çiçek", "saksı", "gözlük", "tablet"] },
+    { src: mutfak, question: "Bu fotoğrafta kaç beyaz eşya gördünüz?", correctAnswers: ["3", "üç"] },
+    { src: kareler, question: "Gördüğünüz tablolarda kaç kare iki tabloda da boyalıydı?", correctAnswers: ["1", "bir"] },
 ];
 
 const Game5 = () => {
@@ -41,12 +41,6 @@ const Game5 = () => {
         setFeedback('');
     };
 
-    const showPhoto = () => {
-        setTimer(7);
-        setFeedback('');
-        setUserAnswer('');
-    };
-
     const showQuestion = () => {
         setFeedback(photos[currentLevel].question);
     };
@@ -74,29 +68,29 @@ const Game5 = () => {
     };
 
     return (
-        <div>
+        <div className={styles.app}>
             {!showGame ? (
-                <div id="main-screen">
+                <div className={styles.mainScreen}>
                     <h1>Hoşgeldiniz!</h1>
-                    <p>1.Gösterilen resimleri inceleyip sorulan soruları cevaplayın</p>
-                    <p>2.Bazı sorularda birden fazla cevap olabilir</p>
-                    <p>3.Birden fazla cevabınız olduğunda cevapları virgülle ayırın</p>
-                    <button onClick={startGame}>Başla</button>
+                    <p>1. Gösterilen resimleri inceleyip sorulan soruları cevaplayın</p>
+                    <p>2. Bazı sorularda birden fazla cevap olabilir</p>
+                    <p>3. Birden fazla cevabınız olduğunda cevapları virgülle ayırın</p>
+                    <button className={styles.startButton} onClick={startGame}>Başla</button>
                 </div>
             ) : (
-                <div id="game-container">
-                    <img id="game-image" src={photos[currentLevel].src} alt="Game" />
-                    <p id="question">{photos[currentLevel].question}</p>
+                <div className={styles.gameContainer}>
+                    <img className={styles.gameImage} src={photos[currentLevel].src} alt="Game" />
+                    <p className={styles.question}>{photos[currentLevel].question}</p>
                     <input
                         type="text"
-                        id="answer"
+                        className={styles.answer}
                         value={userAnswer}
                         onChange={(e) => setUserAnswer(e.target.value)}
                     />
-                    <button onClick={checkAnswer}>Cevabı Gönder</button>
-                    <p id="feedback">{feedback}</p>
-                    <p>Süre: <span id="timer">{timer}</span> saniye</p>
-                    <p>Puan: <span id="score">{score}</span></p>
+                    <button className={styles.submitButton} onClick={checkAnswer}>Cevabı Gönder</button>
+                    <p className={styles.feedback}>{feedback}</p>
+                    <p>Süre: <span className={styles.timer}>{timer}</span> saniye</p>
+                    <p>Puan: <span className={styles.score}>{score}</span></p>
                 </div>
             )}
         </div>

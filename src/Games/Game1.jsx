@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles/Game1.css'; // Ensure to have your CSS file imported
+import styles from './styles/Game1.module.css'; // CSS modülünü içe aktar
 
 const Game1 = () => {
     const cardLevels = {
@@ -129,22 +129,22 @@ const Game1 = () => {
     };
 
     return (
-        <div className="container">
-            <div className="top-info">
+        <div className={styles.container}>
+            <div className={styles.topInfo}>
                 <h1>Kart Çevirme Oyunu</h1>
                 <p>En Yüksek Rekor: <span>{Math.round(highScore)}</span></p>
             </div>
-            <div className="game-info">
+            <div className={styles.gameInfo}>
                 <p>Geçen Süre: <span>{message}</span></p>
                 <p>Hamle Sayısı: <span>{Math.ceil(moves / 2)}</span></p>
             </div>
             {!gameStarted && <button onClick={() => startGame(currentLevel)}>Başla</button>}
-            <div className="game-board" style={{ gridTemplateColumns: `repeat(${cardLevels[currentLevel].columns}, 100px)` }}>
+            <div className={styles.gameBoard} style={{ gridTemplateColumns: `repeat(${cardLevels[currentLevel].columns}, 100px)` }}>
                 {cards.map((card, index) => (
-                    <div key={card.id} className={`card ${card.flipped ? 'flipped' : ''}`} onClick={() => flipCard(index)}>
-                        <div className="card-inner">
-                            <div className="card-front">?</div>
-                            <div className="card-back">{card.content}</div>
+                    <div key={card.id} className={`${styles.card} ${card.flipped ? styles.flipped : ''}`} onClick={() => flipCard(index)}>
+                        <div className={styles.cardInner}>
+                            <div className={styles.cardFront}>?</div>
+                            <div className={styles.cardBack}>{card.content}</div>
                         </div>
                     </div>
                 ))}
