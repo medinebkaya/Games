@@ -1,0 +1,141 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #100e42;
+    color: #eee;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#main-screen {
+    display: flex;
+    font-size: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #100e42;
+}
+
+#rules {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+#start-game {
+    padding: 25px 65px;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #1171a8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#start-game:hover {
+    background-color: #3c1290;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #100e42;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#game-image {
+    max-width: 80%;
+    max-height: 60vh;
+    width: auto;
+    height: auto;
+    border: 2px solid #666;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#question,
+#answer,
+#submit-answer,
+#next-level,
+#restart-game {
+    margin: 20px 0;
+}
+
+#answer {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    width: 80%;
+    background-color: #555;
+    color: #eee;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button.hidden {
+    display: none;
+}
+
+#submit-answer {
+    background-color: #1171a8;
+    color: white;
+}
+
+#submit-answer:hover {
+    background-color: #3c1290;
+}
+
+#next-level {
+    background-color: #63e0ff;
+    color: black;
+}
+
+#next-level:hover {
+    background-color: #89dafd;
+}
+
+#feedback {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.correct {
+    color: #28a745;
+}
+
+.incorrect {
+    color: #dc3545;
+}
+
+#timer,
+#score {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#restart-game {
+    background-color: #dc3545;
+    color: white;
+}
+
+#restart-game:hover {
+    background-color: #c82333;
+}

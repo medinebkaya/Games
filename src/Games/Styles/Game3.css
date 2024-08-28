@@ -1,0 +1,129 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    color: #fff;
+}
+
+#container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+}
+
+#difficultyButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.difficultyButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.difficultyButton:hover {
+    background-color: #0056b3;
+}
+
+#gameArea {
+    position: relative;
+    width: 1100px;
+    height: 700px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.circle,
+.bomb {
+    position: absolute;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    animation: fadeInOut 1.5s linear;
+}
+
+.bomb {
+    background-color: red;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Emoji_u1f4a3.svg/2048px-Emoji_u1f4a3.svg.png');
+    background-size: cover;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+#scoreBoard,
+#highScoreBoard,
+#difficultyBoard,
+#timer {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#rules {
+    max-width: 300px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#rules h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#startButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#startButton:hover {
+    background-color: #218838;
+}
