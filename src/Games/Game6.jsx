@@ -1,7 +1,7 @@
 import React from 'react';
 import './Styles/Game6.css'; // Make sure to create this CSS file
 
-const CrosswordPuzzle = () => {
+const Games6 = () => {
     return (
         <div className="container">
             <h1>Çengel Bulmaca</h1>
@@ -17,4 +17,4 @@ const CrosswordPuzzle = () => {
     );
 };
 
-export default CrosswordPuzzle;
+export default Games6;
