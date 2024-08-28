@@ -6,6 +6,7 @@ import Game3 from './Games/Game3';
 import Game4 from './Games/Game4';
 import Game5 from './Games/Game5';
 import Game6 from './Games/Game6';
+import Game7 from './Games/Game7';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path="/game4" element={<Game4 />} />
           <Route path="/game5" element={<Game5 />} />
           <Route path="/game6" element={<Game6 />} />
+          <Route path="/game7" element={<Game7 />} />
+
         </Routes>
         <br />
         <br />

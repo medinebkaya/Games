@@ -1,0 +1,104 @@
+/* Game7.module.css */
+.container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    background-image: url('./images/mole3.jpg');
+    /* Arka plan resminin doğru yolunu güncelleyin */
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 2.5em;
+    color: #4caf50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ffeb3b, #ffc107);
+    text-align: center;
+    padding: 10px;
+    border-radius: 25px;
+    border: 3px solid #ffeb3b;
+}
+
+.gameBoard {
+    display: grid;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.cell.wrong {
+    background-color: red;
+}
+
+.cell.selected {
+    background-color: yellow;
+}
+
+.mole {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-image: url('./images/mole.png');
+    /* Arka plan resminin doğru yolunu güncelleyin */
+    background-size: cover;
+}
+
+.warning {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: orange;
+    border: 2px solid brown;
+    padding: 8px;
+    border-radius: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.startButton {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.startButton:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.startButton:active {
+    background-color: #388e3c;
+    transform: scale(0.98);
+}
+
+.message {
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
